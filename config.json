@@ -1,0 +1,16 @@
+{
+  "verbose": true,
+  "send_tweet": false,
+  "datafile": "data.json",
+  "address": "df1q7xe6r7s2dcmdrt89g0t4yut6m88vefacj2sntx",
+  "twitter": {
+    "access_token": "125949537-r49paEuFKRS3t0xuN9IhrbblldZX7aJiEUipQ6lG",
+    "access_token_secret": "jjlkf6H3B3UZeuAjylAPDnADgFNtYJKdGJXbXHljYfzCT",
+    "consumer_key": "L9P6yDwx6nUElEBniu65YCV8U",
+    "consumer_secret": "4hLh9jikJUZhzXFvwiSchzh7qHmbwYQeqDo3jItgS0aFevlaWu"
+  },
+  "tweet_settings": {
+    "base_text": "Dobby is happy - he received donations for new 🧦:",
+    "include_defiscan_link": true
+  }
+}
