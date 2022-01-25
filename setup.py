@@ -1,35 +1,30 @@
-import json
-import time
-import tweepy
+from setuptools import setup, find_packages
+from os import path
+import re
 
-def load_data():
-    try:
-        with open('config.json', 'r') as fp:
-            data = json.load(fp)
-    except IOError:
-        data = []
-    
-    return data
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
-def get_user_keys():
-	config = load_data()
-	auth = tweepy.OAuthHandler(config['twitter']['consumer_key'], config['twitter']['consumer_secret'], 'oob')
-	try:
-		redirect_url = auth.get_authorization_url()
-	except tweepy.TweepError:
-		print('Error! Failed to get request token.')
+VERSIONFILE = "bot/version.py"
+verstrline = open(VERSIONFILE, "rt").read()
+VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
+mo = re.search(VSRE, verstrline, re.M)
+if mo:
+    verstr = mo.group(1)
+else:
+    raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 
-	print('visit this authorization url and authorize this bot.')
-	print(redirect_url)
 
-	user_pin_input = input('Enter your authorization PIN now:')
-	try:
-		auth.get_access_token(user_pin_input)
-	except tweepy.TweepError:
-		print('Error! Failed to get access token.')
-
-	print('Enter your access token in the "config.json":')
-	print('access_token: ' + auth.access_token)
-	print('access_token_secret: ' + auth.access_token_secret)
-
-get_user_keys()
+setup(
+    name='defichain_donation_bot',
+    version=verstr,
+    author='Adrian Schnell',
+    author_email='mail@adrian-schnell.consumer_key',
+    license='LICENSE.md',
+    description='This script is designed for tweeting new incoming funds on a predefined DFI address.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
+    install_requires=['psutil', 'requests', 'tweepy'],
+    python_requires='>2.7'
+)

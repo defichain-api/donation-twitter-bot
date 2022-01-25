@@ -1,0 +1,7 @@
+pip
+wheel
+requests
+json
+tweepy
+time
+build
