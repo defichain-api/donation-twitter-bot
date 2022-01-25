@@ -1,9 +1,8 @@
 pip
 wheel
 requests
-json
 tweepy
-time
 build
 psutil
 setuptools
+flake8
