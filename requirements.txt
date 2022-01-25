@@ -5,3 +5,5 @@ json
 tweepy
 time
 build
+psutil
+setuptools
