@@ -1,0 +1,16 @@
+{
+  "verbose": true,
+  "send_tweet": false,
+  "datafile": "data.json",
+  "address": "",
+  "twitter": {
+    "access_token": "",
+    "access_token_secret": "",
+    "consumer_key": "",
+    "consumer_secret": ""
+  },
+  "tweet_settings": {
+    "base_text": "New donation received:",
+    "include_defiscan_link": true
+  }
+}
