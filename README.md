@@ -6,6 +6,9 @@ The task of this bot is to inform about incoming funds on a defined DFI address 
 # Setup
 
 * create own config.json with `cp config_example.json config.json` and add own values
+
+* create an own twitter app: https://developer.twitter.com/en and add the app credentials to your config.json (consumer_key and consumer_secret)
+
 * Run the `setup.py` and follow the instructions.
 
 	- script will output the auth url for twitter
