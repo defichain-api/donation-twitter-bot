@@ -71,12 +71,12 @@ def save_data(datafile, data):
 def get_diff(new, old):
     retval = []
     for k, v in new.items():
+        # hide LM tokens (format: TOKEN_A-TOKEN_b, e.g. BTC-DFI)
+        if k.find('-') != -1:
+            continue
         if k in old:
             if v['amount'] > old[k]['amount']:
                 difference = v['amount'] - old[k]['amount']
-                if k.find('-') != -1:
-                    print('skipping LM token: ' + k)
-                    continue
                 if k == 'DFI' and difference < 1:
                     print('DFI amount below 1, skipping: {:.8f}'.format(difference))
                     continue
@@ -122,8 +122,9 @@ def main():
     dataToken = parse_ocean_token(config['address'])
     dataUTXO = parse_ocean_utxo(config['address'])
     data = merge_token_utxo(dataUTXO, dataToken)
-    prevData = load_data(config['datafile'])
-    save_data(config['datafile'], data)
+    datafilePath = '{}/data.json'.format(os.getcwd())
+    prevData = load_data(datafilePath)
+    save_data(datafilePath, data)
     diff = get_diff(data, prevData)
     message = get_message(diff, config['address'], config['tweet_settings']['base_text'], config['tweet_settings']['include_defiscan_link'])
 

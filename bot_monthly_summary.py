@@ -71,12 +71,12 @@ def save_data(datafile, data):
 def get_diff(new, old):
     retval = []
     for k, v in new.items():
+        # hide LM tokens (format: TOKEN_A-TOKEN_b, e.g. BTC-DFI)
+        if k.find('-') != -1:
+            continue
         if k in old:
             if v['amount'] > old[k]['amount']:
                 difference = v['amount'] - old[k]['amount']
-                if k.find('-') != -1:
-                    print('skipping LM token: ' + k)
-                    continue
                 if k == 'DFI' and difference < 1:
                     print('DFI amount below 1, skipping: {:.8f}'.format(difference))
                     continue
