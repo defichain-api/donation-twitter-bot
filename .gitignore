@@ -1,3 +1,4 @@
 data.json
 data_monthly.json
 config.json
+__pycache__/*
