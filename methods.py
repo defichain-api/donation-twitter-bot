@@ -45,7 +45,7 @@ def merge_token_utxo(utxo, token):
         if k in larger_set:
             larger_set[k]['amount'] += v['amount']
         else:
-            larger_set[k]['amount'] = v['amount']
+            larger_set[k] = v
 
     return larger_set
 
