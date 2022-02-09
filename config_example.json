@@ -1,7 +1,6 @@
 {
   "verbose": true,
   "send_tweet": false,
-  "datafile": "data.json",
   "address": "",
   "twitter": {
     "access_token": "",
@@ -11,6 +10,7 @@
   },
   "tweet_settings": {
     "base_text": "New donation received:",
+    "base_text_monthly": "New donations last month:",
     "include_defiscan_link": true
   }
 }

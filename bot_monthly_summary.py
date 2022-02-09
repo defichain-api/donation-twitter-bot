@@ -11,7 +11,7 @@ def main():
     prevData = methods.load_data(datafilePath)
     methods.save_data(datafilePath, data)
     diff = methods.get_diff(data, prevData)
-    message = methods.get_message(diff, config['address'], config['tweet_settings']['base_text'], config['tweet_settings']['include_defiscan_link'])
+    message = methods.get_message(diff, config['address'], config['tweet_settings']['base_text_monthly'], config['tweet_settings']['include_defiscan_link'])
 
     if config['verbose'] and len(message) > 0:
         print('will tweet message:\n' + message)

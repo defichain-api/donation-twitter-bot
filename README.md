@@ -24,3 +24,8 @@ The task of this bot is to inform about incoming funds on a defined DFI address 
 
 * to run the bot periodically, you should add a cronjob to trigger it (e.g. hourly):
 `0 * * * * python3 bot.py > bot_activity.log`
+
+# system prerequisite
+
+- python >= v3.9
+- installed python packages `requests` & `tweepy`
