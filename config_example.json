@@ -1,7 +1,7 @@
 {
   "verbose": true,
   "send_tweet": false,
-  "address": "",
+  "address": "df1q7xe6r7s2dcmdrt89g0t4yut6m88vefacj2sntx",
   "twitter": {
     "access_token": "",
     "access_token_secret": "",

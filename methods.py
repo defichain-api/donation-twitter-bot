@@ -1,5 +1,6 @@
 import requests
 import json
+import datetime
 import tweepy
 
 def parse_ocean_token(address):
@@ -35,6 +36,31 @@ def parse_ocean_utxo(address):
     }
 
     return retval
+
+
+def get_monthly_history(address, token, type, size):
+    monthly_history = {}
+    request = requests.get(f'https://ocean.defichain.com/v0/mainnet/address/{address}/history?size={size}')
+    request.raise_for_status()
+
+    if not request.ok:
+        exit(f'Error {request.status_code} in history request')
+
+    this_month = datetime.datetime.now().month
+    a = lambda d: d['amounts'][0].split('@')
+    for month in range(1, this_month+1):
+        tokens = [float(a(d)[0]) for d in request.json()['data']
+                  if d['type'] == type and
+                  a(d)[1] == token and
+                  datetime.datetime.fromtimestamp(d['block']['time']).month == month]
+
+        monthly_history[f'{month}'] = {
+            'symbol': 'DFI',
+            'symbolKey': 'DFI',
+            'amount': sum(tokens)
+        }
+
+    return monthly_history
 
 
 def merge_token_utxo(utxo, token):

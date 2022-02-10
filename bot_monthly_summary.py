@@ -2,11 +2,9 @@ import methods
 import os
 
 def main():
-    config = methods.load_data('{}/config.json'.format(os.getcwd()))
+    config = methods.load_data('{}/config_example.json'.format(os.getcwd()))
 
-    dataToken = methods.parse_ocean_token(config['address'])
-    dataUTXO = methods.parse_ocean_utxo(config['address'])
-    data = methods.merge_token_utxo(dataUTXO, dataToken)
+    data = methods.get_monthly_history(config['address'], 'DFI', 'UtxosToAccount', 1000)
     datafilePath = '{}/data.json'.format(os.getcwd())
     prevData = methods.load_data(datafilePath)
     methods.save_data(datafilePath, data)
